@@ -3,6 +3,9 @@
 # Example Usage:
 # python3 square_collage.py image_file_specs
 
+# TODO
+# [] Make add_title() more robust and useful in terms of font, size, color, and placement
+
 # Adapted from https://gist.github.com/npenzin/f884aa0258db6cc76639
 from PIL import Image, ImageOps, ImageDraw, ImageFont
 
@@ -15,6 +18,7 @@ import argparse
 import numpy as np
 
 # Configuration
+FONT_PATH = '~/tensorflow/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf'
 DEFAULT_SIZE = 600
 DEFAULT_PADDING = 60
 DEFAULT_BACKGOUND_COLOR = '#fafafa'
@@ -52,8 +56,8 @@ class Collage( object ):
       
     def add_title( self, title ):
         draw = ImageDraw.Draw(self.canvas)
-        font = ImageFont.truetype(font='/Users/Karl/tensorflow/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf',size=40)
-        draw.text(( 1200,10),title,'blue',font=font)
+        font = ImageFont.truetype( font = FONT_PATH, size = 40 )
+        draw.text(( 1200,10 ), title, 'blue', font = font )
 
     def _crop_img( self, image_to_crop ):
         """Crop the given image"""
